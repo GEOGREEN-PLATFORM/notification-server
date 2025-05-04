@@ -1,0 +1,15 @@
+services:
+  postgresql-notification-server:
+    image: postgres:16
+    hostname: postgres
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_DB: notification-server
+      POSTGRES_USER: notification-server-username
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgresql-notification-server:/var/lib/postgresql-notification-server/data
+
+volumes:
+  postgresql-notification-server: { }
