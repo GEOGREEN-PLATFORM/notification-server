@@ -37,8 +37,8 @@ spring:
       update-element: notification-server
   mail:
     host: smtp.gmail.com
-    username: ${MAIL_USERNAME:greengeo764@gmail.com}
-    password: ${MAIL_PASSWORD:zxri tfsp veyy mxhm}
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
     port: 465
     protocol: smtps
 
