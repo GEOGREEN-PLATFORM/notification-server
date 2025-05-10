@@ -2,6 +2,7 @@ package com.example.notification_server.controller;
 
 import com.example.notification_server.model.dto.ListSubscriptionsDTO;
 import com.example.notification_server.model.dto.SubscriptionDTO;
+import com.example.notification_server.service.SubscriberNotificationService;
 import com.example.notification_server.service.SubscriptionService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
@@ -29,6 +30,7 @@ import static com.example.notification_server.util.AuthorizationStringUtil.AUTHO
 @SecurityRequirement(name = AUTHORIZATION)
 public class SubscriptionController {
     private final SubscriptionService subscriptionService;
+    private final SubscriberNotificationService subscriberNotificationService;
 
     @PostMapping
     public ResponseEntity<Void> addSubscription(@RequestHeader(AUTHORIZATION) String token, @Valid @RequestBody SubscriptionDTO request) {

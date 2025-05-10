@@ -14,5 +14,6 @@ CREATE TABLE subscription (
 CREATE INDEX idx_subscription_element_id ON subscription(element_id);
 
 INSERT INTO type (name) VALUES
-    ('EVENT'),
-    ('USER_MARKER');
+    ('Мероприятие'),
+    ('Заявка'),
+    ('Очаг');

@@ -13,6 +13,8 @@ public interface SubscriptionRepository extends JpaRepository<SubscriptionEntity
 
     Page<SubscriptionEntity> findByEmail(String email, Pageable pageable);
 
+    Page<SubscriptionEntity> findByElementId(UUID elementId, Pageable pageable);
+
     void deleteByEmail(String email);
 
     void deleteByEmailAndElementId(String email, UUID elementId);

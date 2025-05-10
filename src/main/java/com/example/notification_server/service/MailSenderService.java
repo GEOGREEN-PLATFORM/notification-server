@@ -1,6 +1,5 @@
 package com.example.notification_server.service;
 
-import jakarta.activation.DataSource;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
@@ -17,26 +16,17 @@ public class MailSenderService {
     @Value("${spring.mail.username}")
     private String from;
 
-    public void send(String to, String subject, String text) throws MessagingException {
-        mailSender.send(createMimeMessage(to, subject, text, null, null));
+    public void send(String[] to, String subject, String text) throws MessagingException {
+        mailSender.send(createMimeMessage(to, subject, text));
     }
 
-
-    public void send(String to, String subject, String text, String fileName, DataSource file) throws MessagingException {
-        mailSender.send(createMimeMessage(to, subject, text, fileName, file));
-    }
-
-    private MimeMessage createMimeMessage(
-            String to, String subject, String text, String fileName, DataSource file) throws MessagingException {
+    private MimeMessage createMimeMessage(String[] to, String subject, String text) throws MessagingException {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
         helper.setSubject(subject);
         helper.setFrom(from);
         helper.setTo(to);
         helper.setText(text);
-        if (file != null) {
-            helper.addAttachment(fileName, file);
-        }
         return message;
     }
 }
