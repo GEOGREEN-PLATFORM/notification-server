@@ -26,8 +26,21 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: ${KEYCLOAK_URL:http://localhost:8096}/realms/geogreen
-          jwk-set-uri: ${KEYCLOAK_URL:http://localhost:8096}/realms/geogreen/protocol/openid-connect/certs
+          issuer-uri: ${KEYCLOAK_URL:http://217.198.13.249:30096}/realms/geogreen
+          jwk-set-uri: ${KEYCLOAK_URL:http://217.198.13.249:30096}/realms/geogreen/protocol/openid-connect/certs
+  kafka:
+    bootstrap-servers: kafka:9091
+    trusted-packages: "*"
+    topic:
+      update-element: update-element
+    group-id:
+      update-element: notification-server
+  mail:
+    host: smtp.rambler.ru
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    port: 465
+    protocol: smtps
 
 logging:
   level:

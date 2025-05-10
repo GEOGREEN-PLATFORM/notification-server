@@ -13,6 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SubscriptionDTO {
+    private UUID id;
     @NotEmpty
     @Email
     private String email;

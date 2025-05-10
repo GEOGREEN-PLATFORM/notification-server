@@ -19,8 +19,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.notification_server.util.ExceptionStringUtil.BAD_REQUEST_ERROR_TITLE;
+import static com.example.notification_server.util.ExceptionStringUtil.CONFLICT_ERROR_TITLE;
+import static com.example.notification_server.util.ExceptionStringUtil.FORBIDDEN_ERROR_TITLE;
 import static com.example.notification_server.util.ExceptionStringUtil.INTERNAL_SERVER_ERROR_ERROR_TITLE;
 import static com.example.notification_server.util.ExceptionStringUtil.NOT_FOUND_ERROR_TITLE;
+import static com.example.notification_server.util.ExceptionStringUtil.UNAUTHORIZED_ERROR_TITLE;
 
 @Slf4j
 @RestControllerAdvice
@@ -82,21 +85,28 @@ public class RestExceptionHandler {
     @ExceptionHandler({AuthenticationException.class, InvalidBearerTokenException.class})
     public ResponseEntity<ApplicationError> handleAuthenticationException(Exception e) {
         logTheException(e);
-        var ApplicationError = new ApplicationError("Ошибка аутентификации", e.getMessage());
+        var ApplicationError = new ApplicationError(UNAUTHORIZED_ERROR_TITLE, e.getMessage());
         return new ResponseEntity<>(ApplicationError, HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler({AccessDeniedException.class, AuthorizationDeniedException.class})
     public ResponseEntity<ApplicationError> handleAccessDeniedException(Exception e) {
         logTheException(e);
-        var ApplicationError = new ApplicationError("Недостаточно прав", e.getMessage());
+        var ApplicationError = new ApplicationError(FORBIDDEN_ERROR_TITLE, e.getMessage());
         return new ResponseEntity<>(ApplicationError, HttpStatus.FORBIDDEN);
     }
 
     @ExceptionHandler({ConflictException.class})
     public ResponseEntity<ApplicationError> handleConflictException(ConflictException e) {
         logTheException(e);
-        var ApplicationError = new ApplicationError("Конфликт", e.getMessage());
+        var ApplicationError = new ApplicationError(CONFLICT_ERROR_TITLE, e.getMessage());
         return new ResponseEntity<>(ApplicationError, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(CustomAccessDeniedException.class)
+    public ResponseEntity<ApplicationError> handleCustomAccessDeniedException(CustomAccessDeniedException e) {
+        logTheException(e);
+        var ApplicationError = new ApplicationError(FORBIDDEN_ERROR_TITLE, e.getMessage());
+        return new ResponseEntity<>(ApplicationError, HttpStatus.FORBIDDEN);
     }
 }
