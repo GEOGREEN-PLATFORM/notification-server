@@ -1,8 +1,8 @@
-name: Auth Server Build
+name: Notification Server Server Build
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: geogreen-platform/keycloak-auth-service
+  IMAGE_NAME: geogreen-platform/notification-server
 
 on:
   workflow_dispatch:
