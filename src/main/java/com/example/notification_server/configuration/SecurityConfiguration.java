@@ -11,7 +11,8 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfiguration {
     private static final String[] ALLOWED_URLS = {"/v3/api-docs/**",
-            "/swagger-ui/**"
+            "/swagger-ui/**",
+            "/actuator/**"
     };
 
     @Bean
