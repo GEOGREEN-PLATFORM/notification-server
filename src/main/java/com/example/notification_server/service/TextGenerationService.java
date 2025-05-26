@@ -15,12 +15,11 @@ public class TextGenerationService {
         String result = "";
         if (Type.USER_MARKER.getName().equals(type)) {
             result = String.format("Обновления статуса заявки: %s", updateElementDTO.getStatus());
-            result += String.format("\n Посмотреть изменения по ссылке: http://217.198.13.249:30099/hotbeds/%s", updateElementDTO.getElementId());
+            result += String.format("\n Посмотреть изменения по ссылке: http://217.198.13.249:30099/account/user?checkReportDetail=%s", updateElementDTO.getElementId());
         }
         if (Type.POINT.getName().equals(type)) {
             result = String.format("Обновления статуса очага: %s", updateElementDTO.getStatus());
-            result += String.format("\n Посмотреть изменения по ссылке: http://217.198.13.249:30099/account/user?checkReportDetail=%s", updateElementDTO.getElementId());
-
+            result += String.format("\n Посмотреть изменения по ссылке: http://217.198.13.249:30099/hotbeds/%s", updateElementDTO.getElementId());
         }
         return result;
     }
