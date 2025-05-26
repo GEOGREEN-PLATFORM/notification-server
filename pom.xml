@@ -27,7 +27,7 @@
 		<url/>
 	</scm>
 	<properties>
-		<notification-server.version>0.1.6</notification-server.version>
+		<notification-server.version>0.1.7</notification-server.version>
 		<java.version>21</java.version>
 		<flywaydb.version>9.22.1</flywaydb.version>
 		<mapstruct.version>1.5.2.Final</mapstruct.version>
