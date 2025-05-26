@@ -63,4 +63,9 @@ public class SubscriptionController {
         subscriptionService.deleteSubscriptionBySubscriptionId(token, email, subscriptionId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping("/{elementId}")
+    public ResponseEntity<Boolean> isSubscriptionExisted(@RequestHeader(AUTHORIZATION) String token, @PathVariable("elementId") UUID elementId) {
+        return ResponseEntity.ok(subscriptionService.isSubscriptionExisted(token, elementId));
+    }
 }
