@@ -42,7 +42,7 @@ class TextGenerationServiceTest {
         String text = textService.generateText(dto);
 
         assertTrue(text.contains("Обновления статуса заявки: " + status), "Text should mention the status");
-        String expectedLink = String.format("http://217.198.13.249:30099/hotbeds/%s", elementId);
+        String expectedLink = String.format("http://217.198.13.249:30099/account/user?checkReportDetail=%s", elementId);
         assertTrue(text.contains(expectedLink), "Text should contain the hotbeds link with elementId");
     }
 
@@ -53,7 +53,7 @@ class TextGenerationServiceTest {
         String text = textService.generateText(dto);
 
         assertTrue(text.contains("Обновления статуса очага: " + status), "Text should mention the status");
-        String expectedLink = String.format("http://217.198.13.249:30099/account/user?checkReportDetail=%s", elementId);
+        String expectedLink = String.format("http://217.198.13.249:30099/hotbeds/%s", elementId);
         assertTrue(text.contains(expectedLink), "Text should contain the account user link with elementId");
     }
 
