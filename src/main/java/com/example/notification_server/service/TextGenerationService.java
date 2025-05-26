@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class TextGenerationService {
     public String generateTitle(UpdateElementDTO updateElementDTO) {
-        return String.format("Обровление: %s", updateElementDTO.getType());
+        return String.format("GEOGREEN. Обновление: %s", updateElementDTO.getType());
     }
 
     public String generateText(UpdateElementDTO updateElementDTO) {
@@ -15,13 +15,12 @@ public class TextGenerationService {
         String result = "";
         if (Type.USER_MARKER.getName().equals(type)) {
             result = String.format("Обновления статуса заявки: %s", updateElementDTO.getStatus());
-        }
-        if (Type.EVENT.getName().equals(type)) {
-            result = String.format("Обновление мероприятия.\nCтатус: %s\nДата: %s",
-                    updateElementDTO.getStatus(), updateElementDTO.getDate().toLocalDate().toString());
+            result += String.format("\n Посмотреть изменения по ссылке: http://217.198.13.249:30099/hotbeds/%s", updateElementDTO.getElementId());
         }
         if (Type.POINT.getName().equals(type)) {
             result = String.format("Обновления статуса очага: %s", updateElementDTO.getStatus());
+            result += String.format("\n Посмотреть изменения по ссылке: http://217.198.13.249:30099/account/user?checkReportDetail=%s", updateElementDTO.getElementId());
+
         }
         return result;
     }

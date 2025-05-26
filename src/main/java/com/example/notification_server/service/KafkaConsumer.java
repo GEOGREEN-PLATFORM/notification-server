@@ -18,7 +18,7 @@ public class KafkaConsumer {
             groupId = "${spring.kafka.group-id.update-element}",
             containerFactory = "factory"
     )
-    public void listenFinishRegistration(@Payload UpdateElementDTO updateElementDTO) {
+    public void listenUpdateElement(@Payload UpdateElementDTO updateElementDTO) {
         log.info("Get message {}", updateElementDTO);
         subscriberNotificationService.notifyUsers(updateElementDTO);
     }
