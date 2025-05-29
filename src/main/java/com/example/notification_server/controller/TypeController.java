@@ -1,6 +1,7 @@
 package com.example.notification_server.controller;
 
 import com.example.notification_server.service.TypeService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,9 @@ import static com.example.notification_server.util.AuthorizationStringUtil.AUTHO
 public class TypeController {
     private final TypeService typeService;
 
+    @Operation(
+            summary = "Получение списка типов элементов"
+    )
     @GetMapping
     public ResponseEntity<List<String>> getTypes() {
         return ResponseEntity.ok(typeService.getAllTypes());
