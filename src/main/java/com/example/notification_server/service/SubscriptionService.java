@@ -90,4 +90,9 @@ public class SubscriptionService {
         }
         subscriptionRepository.deleteByIdAndEmail(subscriptionId, email);
     }
+
+    public boolean isSubscriptionExisted(String token, UUID elementId) {
+        String email = jwtParserUtil.extractEmailFromJwt(token);
+        return subscriptionRepository.existsByEmailAndElementId(email, elementId);
+    }
 }

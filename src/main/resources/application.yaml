@@ -36,11 +36,11 @@ spring:
     group-id:
       update-element: notification-server
   mail:
-    host: smtp.gmail.com
-    username: ${MAIL_USERNAME}
-    password: ${MAIL_PASSWORD}
-    port: 465
-    protocol: smtps
+    host: ${MAIL_HOST:smtp.gmail.com}
+    username: ${MAIL_USERNAME:name}
+    password: ${MAIL_PASSWORD:password}
+    port: ${MAIL_PORT:465}
+    protocol: ${MAIL_PROTOCOL:smtps}
 
 logging:
   level:
